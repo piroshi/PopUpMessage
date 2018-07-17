@@ -1,0 +1,25 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 Class to control popup messages in unity it comes with an example scene and and additional code to tested.\
+\
+Usage\
+\
+- Create a UI popUp panel with tittle, message and 3 buttons , Cancel, Ok, Action (Action button is used tu assign and special method to execute when pressed\
+- The path and names of the UI elements are hardcoded so if you want to create a different path change the values in IniPopUpPanel method in line 150 of MessageManager.cs\
+- Attach MessageManager.cs to the popUp panel\
+- Initialize the MessageManager in another class using:\
+  		MessageManager.Instance.IniPopUpPanel(popUpTrans);\
+ 	where popUpTrans is the popUpPanel where MessageManager.cs is attached \
+- open the message using:\
+	MessageManager.Instance.OpenPopMessage   OR\
+	MessageManager.Instance.OpenPopUp\
+}
