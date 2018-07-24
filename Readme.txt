@@ -1,4 +1,4 @@
-Class to control popup messages in unity it comes with an example scene and and additional code to tested.
+Class to control popup messages in unity it comes with an example scene and and additional code to test.
 
 Usage
 
