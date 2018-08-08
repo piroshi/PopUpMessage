@@ -22,8 +22,8 @@ public class MessageManager : MonoBehaviour
     static UnityAction extraAction;  //Additional action added with the method AddActionTobutton
     static bool transIni;            // does the transition started?
     static Image[] uiImages;         // array of images that the the popup window contains
-	static Text[] uiText;            // array of texts that the popup window contains
-	static float transitionSpeed = .05f;  // speed of the panel for apearing or disapearing
+    static Text[] uiText;            // array of texts that the popup window contains
+    static float transitionSpeed = .05f;  // speed of the panel for apearing or disapearing
 	static bool show;                // boolean to define if the panel will be shown or hidden
 	static List<float> alphasImgs;   // The alpha value of the images to maintain them after fadein
 	static List<float> alphasText;   // The alpha value of the texts to maintain them after fadein
