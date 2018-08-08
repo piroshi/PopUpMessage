@@ -20,15 +20,15 @@ public class MessageManager : MonoBehaviour
     static Button okButton;          // Reference of the OK button on the popUp
     static bool popUpIsOpen;         // is the popUp open?
     static UnityAction extraAction;  //Additional action added with the method AddActionTobutton
-	static bool transIni;            // does the transition started?
-	static Image[] uiImages;         // array of images that the the popup window contains
-	static Text[] uiText;            // array of texts that the the popup window contains
-	static float transitionSpeed = .05f;  // speed the panel apears or disapears
+    static bool transIni;            // does the transition started?
+    static Image[] uiImages;         // array of images that the the popup window contains
+	static Text[] uiText;            // array of texts that the popup window contains
+	static float transitionSpeed = .05f;  // speed of the panel for apearing or disapearing
 	static bool show;                // boolean to define if the panel will be shown or hidden
-	static List<float> alphasImgs;   // The alpha value of the images to maintain this falues after fadein
-	static List<float> alphasText;   // The alpha value of the texts to maintain this falues after fadein
+	static List<float> alphasImgs;   // The alpha value of the images to maintain them after fadein
+	static List<float> alphasText;   // The alpha value of the texts to maintain them after fadein
 	static float currentTime;        // time used for the transition
-	static string cancelText = "Cancel";   //Variable created if the text of the buttons requiere to be changed to other language
+	static string cancelText = "Cancel";   //Variable created if the text of the cancel buttons requiere to be changed to other language of word
 
     static Transform popUpPanel;    //Main Transform of the popUpPanel
     static Queue<Messages> messagesQueue = new Queue<Messages>();  //List of Messages in Queue
@@ -75,7 +75,7 @@ public class MessageManager : MonoBehaviour
     /// </summary>
 	void Fade()
     {
-        bool termino = true;
+        bool finished = true;
 
             // Transition for the images
             for (int i = 0; i < uiImages.Length; i++)
@@ -86,7 +86,7 @@ public class MessageManager : MonoBehaviour
 
                 if ((uiImages[i].color.a > 0 && !show) || (uiImages[i].color.a <= alphasImgs[i] && show))
                 {
-                    termino = false;
+                    finished = false;
                     OnTransitionFinished();
                 }
             }
@@ -99,11 +99,11 @@ public class MessageManager : MonoBehaviour
 
                 if (uiText[i].color.a > 0 && !show || (uiText[i].color.a <= alphasText[i] && show))
                 {
-                    termino = false;
+                    finished = false;
                 }
             }
         
-            if (termino)
+            if (finished)
             {
                 transIni = false;
 
@@ -113,8 +113,8 @@ public class MessageManager : MonoBehaviour
     }
 
 
-	/// <summary>
-	/// addition or subtraction of a variable. Used to simplify the Fade method
+    /// <summary>
+    /// addition or subtraction of a variable. Used to simplify the Fade method
     /// </summary>
     /// <returns>El valor que se modifica</returns>
     /// <param name="iniValue">Initian value.</param>
@@ -227,7 +227,7 @@ public class MessageManager : MonoBehaviour
             popUpPanel.gameObject.SetActive(true);
             IniFade(true);
 
-			panelTitle.text = "";
+            panelTitle.text = "";
             okButton.transform.gameObject.SetActive(true);
             actionButton.transform.gameObject.SetActive(false);
             cancelButton.transform.gameObject.SetActive(false);                    
@@ -251,7 +251,7 @@ public class MessageManager : MonoBehaviour
 			IniFade(false);
             TransitionFinished += OpenMessageFromStack;
             popUpIsOpen = false;
-			OnAllMessagesClosed();
+            OnAllMessagesClosed();
 		}
         
         
@@ -408,7 +408,7 @@ public class MessageManager : MonoBehaviour
         TransitionFinished -= OpenMessageFromStack;
 
         Messages nextMessage = messagesQueue.Dequeue();
-		OpenActionPopUp(nextMessage.titleText, nextMessage.messageText,nextMessage.showOkButton, nextMessage.actionButonText,nextMessage.action,nextMessage.showCancelButton, nextMessage.cancel);
+        OpenActionPopUp(nextMessage.titleText, nextMessage.messageText,nextMessage.showOkButton, nextMessage.actionButonText,nextMessage.action,nextMessage.showCancelButton, nextMessage.cancel);
         
 
     }
@@ -445,7 +445,7 @@ public class MessageManager : MonoBehaviour
 
 
 /// <summary>
-/// Class that storage popup messages' info to added to a stack
+/// Class that storage popup messages' info added to a stack
 /// </summary>
 class Messages
 {
